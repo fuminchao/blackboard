@@ -21,6 +21,7 @@ do
   find $SDIR -name "*.[wj]ar" -type f \
     -not -path "*/backups/*" -prune \
     -not -path "*/__MACOSX/*" -prune \
+    -not -path "*/tomcat/work/Catalina/localhost/webapps#*" -prune \
     -not -name "strut*.jar" \
     -not -name "spring*.jar" \
     -not -name "axis2-*.jar" \
