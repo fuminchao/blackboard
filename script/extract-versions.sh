@@ -16,10 +16,20 @@ EOF
 echo "$PREVLN"
 }
 
-find $BBHOME -name "*.[wj]ar" -type f | while read JAR
+for DIR in "$BBHOME $BBCONTENT"
 do
-  unzip -l "$JAR" META-INF/MANIFEST.MF >> /dev/null || continue;
-
-  PrintManifest "$JAR"  | grep -E "(X\-Bb\-Repository|X\-Bb\-Commit): "
-  [[ "$?" = "0" ]] && echo "X-Bb-File: $JAR" && echo
+  find $DIR -name "*.[wj]ar" -type f \
+    -not -path "./backups/*" -prune \
+    -not -path "./cache/*" -prune \
+    -not -name "strut*.jar" \
+    -not -name "spring*.jar" \
+    -not -name "axis2-*.jar" \
+    -not -name "hibernate-*.jar" \
+    -not -name "activemq-*.jar" \
+  | while read JAR
+  do
+    unzip -l "$JAR" META-INF/MANIFEST.MF >> /dev/null || continue;
+    PrintManifest "$JAR"  | grep -E "(X\-Bb\-Repository|X\-Bb\-Commit): "
+    [[ "$?" = "0" ]] && echo "X-Bb-File: $JAR" && echo
+  done
 done
