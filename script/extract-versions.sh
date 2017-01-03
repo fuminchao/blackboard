@@ -16,7 +16,7 @@ EOF
 echo "$PREVLN"
 }
 
-for SDIR in "$BBHOME"
+for SDIR in "/usr/local/blackboard/cache/vi/BBultrainteg/plugins/astr-1025622397760/webapp/WEB-INF/lib/"
 do
   find $SDIR -name "*.[wj]ar" -type f \
     -not -path "*/backups/*" -prune \
@@ -33,6 +33,7 @@ do
     unzip -l "$JAR" META-INF/MANIFEST.MF >> /dev/null || continue;
     BB_LINES=`PrintManifest "$JAR"  | grep -E "(X\-Bb\-Repository|X\-Bb\-Commit): "`
     if [[ "$?" = "0" ]]; then
+      echo $BB_LINES
       BB_REPO=`echo $BB_LINES | sort | tr '\n' ' ' | cut -d' ' -f4`
       BB_COMM=`echo $BB_LINES | sort | tr '\n' ' ' | cut -d' ' -f2`
       echo "$BB_REPO#$BB_COMM $JAR"
