@@ -33,8 +33,8 @@ do
     unzip -l "$JAR" META-INF/MANIFEST.MF >> /dev/null || continue;
     BB_LINES=`PrintManifest "$JAR"  | grep -E "(X\-Bb\-Repository|X\-Bb\-Commit): "`
     if [[ "$?" = "0" ]]; then
-      BB_REPO=`echo $BB_LINES | tr '\n' ' ' | cut -d' ' -f4`
-      BB_COMM=`echo $BB_LINES | tr '\n' ' ' | cut -d' ' -f2`
+      BB_REPO=`echo $BB_LINES | sort | tr '\n' ' ' | cut -d' ' -f4`
+      BB_COMM=`echo $BB_LINES | sort | tr '\n' ' ' | cut -d' ' -f2`
       echo "$BB_REPO#$BB_COMM $JAR"
     fi
   done
