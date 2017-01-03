@@ -25,6 +25,7 @@ do
     -not -name "axis2-*.jar" \
     -not -name "hibernate-*.jar" \
     -not -name "activemq-*.jar" \
+    -not -name "commons-*.jar" \
   | while read JAR
   do
     unzip -l "$JAR" META-INF/MANIFEST.MF >> /dev/null || continue;
