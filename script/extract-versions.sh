@@ -31,6 +31,7 @@ do
   | while read JAR
   do
     unzip -l "$JAR" META-INF/MANIFEST.MF >> /dev/null || continue;
+    PrintManifest "$JAR"
     BB_LINES=`PrintManifest "$JAR"  | grep -E "(X\-Bb\-Repository|X\-Bb\-Commit): "`
     if [[ "$?" = "0" ]]; then
       echo $BB_LINES
