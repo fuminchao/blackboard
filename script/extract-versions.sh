@@ -16,7 +16,7 @@ EOF
 echo "$PREVLN"
 }
 
-for DIR in "$BBHOME $BBCONTENT"
+for DIR in "$BBHOME $BBCONTENT/vi"
 do
   find $DIR -name "*.[wj]ar" -type f \
     -not -path "./backups/*" -prune \
