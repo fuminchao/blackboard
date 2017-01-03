@@ -19,7 +19,8 @@ echo "$PREVLN"
 for SDIR in "$BBHOME"
 do
   find $SDIR -name "*.[wj]ar" -type f \
-    -not -path "./backups/*" -prune \
+    -not -path "*/backups/*" -prune \
+    -not -path "*/__MACOSX/*" -prune \
     -not -name "strut*.jar" \
     -not -name "spring*.jar" \
     -not -name "axis2-*.jar" \
