@@ -16,9 +16,9 @@ EOF
 echo "$PREVLN"
 }
 
-for DIR in "$BBHOME"
+for SDIR in "$BBHOME"
 do
-  find $DIR -name "*.[wj]ar" -type f \
+  find $SDIR -name "*.[wj]ar" -type f \
     -not -path "./backups/*" -prune \
     -not -name "strut*.jar" \
     -not -name "spring*.jar" \
