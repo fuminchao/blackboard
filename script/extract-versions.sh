@@ -16,11 +16,10 @@ EOF
 echo "$PREVLN"
 }
 
-for DIR in "$BBHOME $BBCONTENT/vi"
+for DIR in "$BBHOME"
 do
   find $DIR -name "*.[wj]ar" -type f \
     -not -path "./backups/*" -prune \
-    -not -path "./cache/*" -prune \
     -not -name "strut*.jar" \
     -not -name "spring*.jar" \
     -not -name "axis2-*.jar" \
